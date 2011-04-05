@@ -1,0 +1,47 @@
+Installation
+============
+
+Prerequisites
+-------------
+You need a working apache webserver with PHP 5 installed.
+
+Make sure PHP's safe_mode is disabled and your webserver has write
+permission in the photos/ directory, otherwise PHP won't be able to
+write files, and you'll have to do that manually.
+
+PHP 4 will not work, as it cannot open SQLite databases (digikam saves
+it's database in SQLite format) and it's Object-Syntax is different.
+Feel free to adapt this script to PHP 4 though, should be easy, the
+digikam database could be dumped into a mysql database.
+
+Installation
+------------
+Put the unpacked archive somewhere in your htdocs or public_html folder
+so apache can find it
+
+Example: /home/thorben/public_html/photos/{files}
+
+Then open this in your webbrowser:
+http://localhost/~thorben/photos/albumview/setup
+
+Follow the instructions :-)
+
+Go to
+http://localhost/~thorben/photos/albumview
+
+Done.
+
+Troubleshooting
+---------------
+Nothing yet
+
+About
+=====
+This script was written to let others browse my photos and making use of
+digikam's great tagging feature, which the ordinary HTML export didn't
+offer.
+
+It's very easy to use wget to get the functionality of the export plugin.
+
+It works for me, but I realize this is neither very elegant nor very fast.
+Feel free to improve it :-)
