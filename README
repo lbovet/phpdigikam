@@ -18,7 +18,8 @@
 Overview
 ========
 
-This PHP application gives access to your Digikam 1.x photo collection.
+This PHP application gives web access to your Digikam 1.x photo 
+collection.
 
 Installation
 ============
@@ -41,16 +42,17 @@ Installation
 Put the unpacked archive somewhere in your htdocs or public_html folder
 so apache can find it
 
-Adapt inc/config.inc.php
+ * Adapt inc/config.inc.php
+ * Create a symlink under the phpdigikam folder named "images" pointing 
+   to your image collection (or add a corresponding DocumentRoot to 
+   Apache configuration).
+ * Create a symlink under the phpdigikam folder named "thumbnails" 
+   pointing to your ~/.thumbnails/large folder
+   (or add a corresponding DocumentRoot to Apache configuration).
 
 Go to
-http://localhost/~thorben/photos/albumview
+http://localhost/location-of-phpdigikam/albumview.php
 
-Done.
-
-Troubleshooting
----------------
-Nothing yet
 
 About
 =====
@@ -66,5 +68,5 @@ It works for me, but I realize this is neither very elegant nor very fast.
 Feel free to improve it :-)
 
 From Laurent:
-I adapted it to my own needs and makde it work with Digikam 1.x. I hope it 
+I adapted it to my own needs and made it work with Digikam 1.x. I hope it 
 will work for you.
