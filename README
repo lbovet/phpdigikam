@@ -1,3 +1,25 @@
+    Copyright 2006-2011
+    Author: Thorben Kröger <thorbenk@gmx.net>
+            Laurent Bovet <laurent.bovet@windmaster.ch>
+
+    This file is part of phpdigikam
+
+    phpdigikam is free software; you can redistribute it
+    and/or modify it under the terms of the GNU General
+    Public License as published by the Free Software Foundation;
+    either version 2, or (at your option)
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+Overview
+========
+
+This PHP application gives access to your Digikam 1.x photo collection.
+
 Installation
 ============
 
@@ -19,12 +41,7 @@ Installation
 Put the unpacked archive somewhere in your htdocs or public_html folder
 so apache can find it
 
-Example: /home/thorben/public_html/photos/{files}
-
-Then open this in your webbrowser:
-http://localhost/~thorben/photos/albumview/setup
-
-Follow the instructions :-)
+Adapt inc/config.inc.php
 
 Go to
 http://localhost/~thorben/photos/albumview
@@ -37,6 +54,8 @@ Nothing yet
 
 About
 =====
+
+From Thorben:
 This script was written to let others browse my photos and making use of
 digikam's great tagging feature, which the ordinary HTML export didn't
 offer.
@@ -45,3 +64,7 @@ It's very easy to use wget to get the functionality of the export plugin.
 
 It works for me, but I realize this is neither very elegant nor very fast.
 Feel free to improve it :-)
+
+From Laurent:
+I adapted it to my own needs and makde it work with Digikam 1.x. I hope it 
+will work for you.
