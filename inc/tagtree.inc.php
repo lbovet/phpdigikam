@@ -28,8 +28,11 @@ class TagTree extends Tree {
 		parent::__construct();
 
 		//Get the tag tree from the database
-		$tagsQuery = $this->_db->query('
-		 SELECT id, pid, name FROM Tags ORDER BY pid ASC');
+		$tagsQuery = $this->_db->query('select Tags.id,pid,
+		Tags.name,a.relativePath||\'/\'||i.name as path from Tags 
+		left outer join Images as i on i.id = Tags.icon 
+		left outer join Albums as a on a.id = i.album
+                         ORDER BY pid ASC');
 		$rows = $tagsQuery->fetchAll();
 		$tagsQuery = NULL;
 
@@ -45,7 +48,8 @@ class TagTree extends Tree {
 			$this->_tagRows[$row['id']] = array(
 			 'name' => $row['name'],
 			 'pid'  => $row['pid'],
-			 'id'   => $row['id']);
+			 'id'   => $row['id'],
+			 'path' => $row['path']);
 
 			$this->_tagsIds[] = $row['id'];
 
@@ -68,8 +72,9 @@ class TagTree extends Tree {
 	
 				$tag_id  = $this->tagPropertyById($id, 'id');
 				$tag_name = $this->tagPropertyById($id, 'name');
+				$tag_path = $this->tagPropertyById($id, 'path');
 			
-				$node = new Node($tag_id, $tag_name);
+				$node = new Node($tag_id, $tag_name, $tag_path);
 				$parentNode->addChild($node);
 				$this->buildTagTreeRecursive($tag_id, $node);
 			}
@@ -83,12 +88,14 @@ class TagTree extends Tree {
 		$path = $this->pathToNode($id);
 	
 		$i=0; $ret="";
+		$ret.='<p class="tiny">&middot;&nbsp;';
 		foreach($path as $step) {
 			if($i!=0)
-				$ret.=sprintf('<img alt="&gt;" src="%s/icons/arrow.gif" />&nbsp;', $_config["selfUrl"]);
-			$ret.=Photoalbum::mklink('tag', $step->key(), $step->data());
+				$ret.=' &gt;&nbsp;';
+			$ret.=Photoalbum::mklink('tag', $step->key(),  str_replace(' ', '&nbsp;', $step->data()));
 			$i++;
 		}
+		$ret.="</p>";
 		return $ret;
 	}
 

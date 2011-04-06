@@ -24,10 +24,12 @@ class Node {
 	private $_children = array();
 	private $_data;
 	private $_key;
+	private $_path;
 
-	function __construct($key, $data) {
+	function __construct($key, $data, $path) {
 		$this->_data = $data;
 		$this->_key = $key;
+		$this->_path = $path;
 	}
 
 	public function itsParent() {
@@ -61,6 +63,9 @@ class Node {
 	public function key() {
 		return $this->_key;
 	}
+	public function path() {
+		return $this->_path;
+	}
 };
 
 /**
@@ -70,7 +75,7 @@ class Tree {
 	private $_rootNode;
 
 	function __construct() {
-		$this->_rootNode = new Node(NULL, NULL);
+		$this->_rootNode = new Node(NULL, NULL, NULL);
 	}
 
 	public function isRoot($node) {
